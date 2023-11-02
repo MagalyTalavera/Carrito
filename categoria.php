@@ -24,10 +24,10 @@
                         <h4>Registrar Categorias</h4>
                         <div class="card">
                             <div class="card-body">
-                                <form action="operaciones/registrar_usuario.php" method="POST">
+                                <form action="operaciones/registrar_categoria.php" method="POST">
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Nombre de la Categoria:</label>
-                                        <input type="text" name="ape_nom" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                        <input type="text" name="categoria" class="form-control col-lg-10 col-md-10 col-sm-12" required>
                                     </div>
 
                                     <div class="form-group row">

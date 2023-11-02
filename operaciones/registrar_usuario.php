@@ -22,7 +22,7 @@ if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_foto)) {
     $consulta="INSERT INTO usuario(dni, apellidos_nombres, correo, telefono, direccion, fecha_nacimiento, password, id_rol, foto, activo, reset_password, token_password)
 VALUES ('$dni', '$ape_nom', '$correo', '$telefono', '$direccion', '$fecha_naci', '$pass_secure','$id_rol','$nombre_archivo ',1,0,'')";
 
-$ejecutar= mysqli_query($conexion, $consulta);
+$ejecutar= mysqli_query($conn, $consulta);
 
 if ($ejecutar) {
     echo "Registro Exitoso";
