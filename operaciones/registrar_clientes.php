@@ -4,15 +4,15 @@ include("../include/conexion.php");
 
 $ruc=$_POST['ruc'];
 $razon=$_POST['nombre'];
-$correo=$_POST['correo'];
 $telefono=$_POST['telefono'];
+$correo=$_POST['correo'];
 $direccion=$_POST['direccion'];
-$metodo=$_POST['m_p'];
+$d_e=$_POST['d_e'];
 
 
 
-    $consulta="INSERT INTO cliente(ruc,razon_social,correo,telefono,direccion,metodo_pago)
-    VALUES ('$ruc','$razon','$correo','$telefono','$direccion','$metodo')";
+    $consulta="INSERT INTO cliente(ruc_dni,razon_social,telefono,correo,direccion,direccion_envio)
+    VALUES ('$ruc','$razon','$correo','$telefono','$direccion','$d_e')";
 
 $ejecutar= mysqli_query($conn, $consulta);
 
