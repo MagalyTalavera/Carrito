@@ -95,8 +95,7 @@
                                     class="dripicons-gear ext-white"></i><span class="text-white">Mantenimiento</span></a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="sistema.php">Sistema</a></li>
-                                <li><a href="roles.php">Roles</a></li>
-                                <li><a href="datos_empresa.php">Datos de la empresa</a></li>
+                                <li><a href="roles.php">Roles</a></li>                                
                             </ul>
                     </li>
                 </ul>
