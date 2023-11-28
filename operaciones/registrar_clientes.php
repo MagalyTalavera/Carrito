@@ -12,7 +12,7 @@ $d_e=$_POST['d_e'];
 
 
     $consulta="INSERT INTO cliente(ruc_dni,razon_social,telefono,correo,direccion,direccion_envio)
-    VALUES ('$ruc','$razon','$correo','$telefono','$direccion','$d_e')";
+    VALUES ('$ruc','$razon','$telefono','$correo','$direccion','$d_e')";
 
 $ejecutar= mysqli_query($conn, $consulta);
 
