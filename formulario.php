@@ -52,7 +52,7 @@ include("include/conexion.php");
                                     <tbody>
                                         <?php
 
-                                        $consulta="SELECT * FROM usuario";
+                                        $consulta="SELECT u.foto,u.dni,u.apellidos_nombres,u.correo,u.telefono,u.direccion,u.activo,r.nombre FROM usuario u INNER JOIN roles r ON u.id_rol=r.id";
                                         $ejecutar = mysqli_query($conn, $consulta);
                                         $contador=0;
                                         while ($respuesta = mysqli_fetch_array($ejecutar)) {
@@ -67,7 +67,7 @@ include("include/conexion.php");
                                             echo "<td>".$respuesta['telefono']."</td>";
                                             echo "<td>".$respuesta['direccion']."</td>";
                                             echo "<td>".$respuesta['activo']."</td>";
-                                            echo "<td>".$respuesta['id_rol']."</td>";
+                                            echo "<td>".$respuesta['nombre']."</td>";/*id_rol*/ 
                                             echo "<td><button class='btn btn-success'>Editar</button>  <button class='btn btn-success'>Eliminar</button></td>";
 
 
