@@ -50,7 +50,7 @@ include("include/conexion.php");
                                     <tbody>
                                         <?php
 
-                                        $consulta="SELECT * FROM pedidos";
+                                        $consulta="SELECT pe.id,cli.razon_social,fecha_hora_pedido,pe.fecha_entrega,pe.metodo_pago,pe.monto,pe.comprobante,pe.estado FROM pedidos pe INNER JOIN cliente cli ON pe.id_cliente=cli.id";
                                         $ejecutar = mysqli_query($conn, $consulta);
                                         $contador=0;
                                         while ($respuesta = mysqli_fetch_array($ejecutar)) {
@@ -58,7 +58,7 @@ include("include/conexion.php");
                                             echo "<tr>";
                                             
                                             echo "<td>".$contador."</td>";
-                                            echo "<td>".$respuesta['id_cliente']."</td>";
+                                            echo "<td>".$respuesta['razon_social']."</td>";/*id_cliente*/
                                             echo "<td>".$respuesta['fecha_hora_pedido']."</td>";
                                             echo "<td>".$respuesta['fecha_entrega']."</td>";
                                             echo "<td>".$respuesta['metodo_pago']."</td>";
