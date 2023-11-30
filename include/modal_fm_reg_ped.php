@@ -10,14 +10,26 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="operaciones/registrar_usuario.php" method="POST">
+                                <form action="operaciones/registrar_pedido.php" method="POST">
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-md-2 col-sm-12" >id_cliente:</label>
+                                        <select name="id_cliente" id="" class="form-control col-lg-4 col-md-4 col-sm-12">
+                                        <option></option>
+                                            <?php
+                                            $b_roles = "SELECT * FROM cliente";
+                                            $r_b_roles = mysqli_query($conn, $b_roles);
+                                            while ($datos_roles = mysqli_fetch_array($r_b_roles)) {?>
+                                                <option value="<?php echo $datos_roles['id'];?>"><?php echo $datos_roles['razon_social'];?></option>
+                                            <?php }?>                                         
+                                        </select>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Fecha hora de pedido:</label>
-                                        <input type="date" name="fecha_naci" class="form-control col-lg-4 col-md-4 col-sm-12" required>
+                                        <input type="date" name="fecha_h_pedi" class="form-control col-lg-4 col-md-4 col-sm-12" required>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Fecha de entrega:</label>
-                                        <input type="date" name="fecha_naci" class="form-control col-lg-4 col-md-4 col-sm-12" required>
+                                        <input type="date" name="fecha_entrega" class="form-control col-lg-4 col-md-4 col-sm-12" required>
                                     </div>
 
                                     <!---
@@ -32,7 +44,7 @@
                                 <div class="form-group row">
                                     <label class="col-lg-2 col-md-2 col-sm-12">Metodo de Pago</label>
                                
-                                    <select name="stock" class="form-control col-lg-4 col-md-4 col-sm-12" required>
+                                    <select name="metodo_p" class="form-control col-lg-4 col-md-4 col-sm-12" required>
                                     <option>----Seleccione El metodo de pago----</option>
                                     <option>BCP</option>
                                      <option>iNTERBANCK</option>
@@ -46,15 +58,15 @@
 
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Monto:</label>
-                                        <input type="number" name="telefono" class="form-control col-lg-4 col-md-4 col-sm-12" required>
+                                        <input type="number" name="monto" class="form-control col-lg-4 col-md-4 col-sm-12" required>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Comprobante:</label>
-                                        <input type="text" name="direccion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                        <input type="text" name="comprobante" class="form-control col-lg-10 col-md-10 col-sm-12" required>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-md-2 col-sm-12" >Estado:</label>
-                                        <input type="text" name="direccion" class="form-control col-lg-10 col-md-10 col-sm-12" required>
+                                        <input type="text" name="estado" class="form-control col-lg-10 col-md-10 col-sm-12" required>
                                     </div>
                                     <div class="form-group row">
                                     <label class="col-lg-2 col-md-2 col-sm-12"></label>
