@@ -18,5 +18,17 @@ for ($i=0; $i <= $contar; $i++) {
 }
 
 
+include("include/conexion.php");
+
+$lista3 = array();
+
+$consulta ="SELECT * FROM producto";
+$ejecutar =mysqli_query($conn, $consulta);
+while ($r_ejecutar = mysqli_fetch_array($ejecutar)) {
+    $lista3[$r_ejecutar['id']] = $r_ejecutar['descripcion'];
+
+}
+
+print_r($lista3);
 
 ?>

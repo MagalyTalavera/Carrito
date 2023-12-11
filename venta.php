@@ -1,5 +1,7 @@
 <?php
 include("include/conexion.php");
+session_start();
+$_SESSION['productos']=array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,8 @@ include("include/conexion.php");
     <link href="plantilla/Admin/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="plantilla/Admin/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="plantilla/Admin/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <!-- Script obtenido desde CDN jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <style>
         .cantidad{
@@ -64,8 +68,8 @@ include("include/conexion.php");
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-4 col-md-4 col-sm-12" >Producto:</label>
-                                        <input type="number" name="producto" class="form-control col-lg-4 col-md-4 col-sm-12" required placeholder="Codigo producto">
-                                        <button class="btn btn-info col-lg-2 col-md-2 col-sm-4" >Buscar</button>
+                                        <input type="number" name="producto" id="producto" class="form-control col-lg-4 col-md-4 col-sm-12" required placeholder="Codigo producto">
+                                        <button type="button" class="btn btn-info col-lg-2 col-md-2 col-sm-4" onclick="agregar_producto();">Agregar</button>
                                     </div> 
                                     <div class="form-group row">
                                         <label class="col-lg-4 col-md-4 col-sm-12" >Fecha y Hora: </label>
@@ -90,15 +94,25 @@ include("include/conexion.php");
                                                     <th width="5%"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="contenido_tabla">
+                                                <?php
+                                                $array_productos=$_SESSION['productos'];
+                                                //$key=id $value=cantidad
+                                                foreach ($array_producto as $key => $value) {
+                                                    $consulta = "SELECT * FROM producto WHERE id='$key'";
+                                                    $ejecutar = mysqli_query($conn,$consulta);
+                                                    $producto =mysqli_fetch_array($ejecutar);
+                                                
+                                                ?>
                                                 <tr>
                                                     <td>1</td>
                                                     <td>nombre producto</td>
-                                                    <td><input type="number" value="2" class="cantidad"></td>
+                                                    <td><input type="number" value="2" class="cantidad" onchange="actualizar_cantidad(id);"></td>
                                                     <td>s/. 50.00</td>
                                                     <td>s/. 100.00</td>
-                                                    <td><button type="submit" class="btn btn-danger">X</button></td>
+                                                    <td><button type="submit" class="btn btn-danger" onclick="eliminar_produdcto(id);">X</button></td>
                                                 </tr>
+                                                <?php } ?>
                                                 <tr>
                                                     <td colspan="4" class="text-center">TOTAL</td>
                                                     <td>s/. 100.00</td>
@@ -146,6 +160,28 @@ include("include/conexion.php");
 
     <!-- App js -->
     <script src="plantilla/Admin/vertical/assets/js/theme.js"></script>
+
+    <script>
+        function agregar_producto(){
+            var codigo = $('#producto').val();
+            $.ajax({
+                type: "POST",
+                url: "operaciones/agregar_producto.php",
+                data: {cod: codigo},
+                success: function(r) {
+                    $('#contenido_tabla').html(r);
+                    
+                }
+            })
+
+        }
+        function actualiuzar_cantidad(id) {
+            
+        }
+        function eliminar_producto(id){
+
+        }
+    </script>
 
 </body>
 
