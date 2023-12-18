@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hola</h1>
+   <button onClick="return confirm('Estas Seguro que quieres Eliminar?')">Eliminar</button>
 </body>
 </html>

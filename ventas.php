@@ -35,15 +35,16 @@ include("include/conexion.php");
                             <div class="card-body">
                                 <table id="basic-datatable" class="table dt-responsive nowrap">
                                     <thead>
-                                        <tr>
-                                            <th>Nº</th>
-                                            <th>SERIE DE VENTA</th>
-                                            <th>NUMERO DE VENTA</th>
-                                            <th>FECHA HORA VENTA</th>
-                                            <th>MONTO TOTAL</th>
-                                            <th>ID CLIENTE</th>
-                                            <th>ID USUARIO</th>
-                                            <th>ACCIONES</th>
+                                    <tr>
+                                            <th >#</th>
+                                            <th >serie_venta</th>
+                                            <th >Numero Venta</th>
+                                            <th >Fecha_Hora_venta</th>
+                                            <th >monto Total</th>
+                                            <th >id_cliente</th>
+                                            <th >id_usuario</th>
+
+                                            <th >Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>

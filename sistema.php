@@ -1,3 +1,35 @@
+
+<div class="form-group row">
+                                                <label class="col-lg-2 col-md-2 col-sm-6">Usuario: </label>
+                                                <select name="usuario" id="usuario" class="form-control col-lg-6 col-md-6 col-sm-12">
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $consulta = "SELECT * FROM usuario";
+                                                    $ejecutar = mysqli_query($conn, $consulta);
+                                                    while ($usuario = mysqli_fetch_array($ejecutar)) {
+                                                        echo '<option value="'.$usuario['id'].'">'.$usuario['apellidos_nombres'].'</option>';
+                                                    }
+
+                                                    ?>
+                                                </select>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
