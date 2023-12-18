@@ -4,6 +4,7 @@ include("include/conexion.php");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +18,9 @@ include("include/conexion.php");
     <link href="plantilla/Admin/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="plantilla/Admin/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    <?php 
+    <?php
     // Lenguaje en php
     include("include/menu.php");
 
@@ -30,7 +32,7 @@ include("include/conexion.php");
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <?php include("include/modal_fm_reg_rol.php");?>
+                        <?php include("include/modal_fm_reg_rol.php"); ?>
                         <h4>Relacion de categoria</h4>
                         <div class="card">
                             <div class="card-body">
@@ -45,26 +47,25 @@ include("include/conexion.php");
                                     <tbody>
                                         <?php
 
-                                        $consulta="SELECT * FROM roles";
+                                        $consulta = "SELECT * FROM roles";
                                         $ejecutar = mysqli_query($conn, $consulta);
-                                        $contador=0;
+                                        $contador = 0;
                                         while ($respuesta = mysqli_fetch_array($ejecutar)) {
-                                            $contador +=1;
+                                            $contador += 1;
                                             echo "<tr>";
-                                            
-                                            echo "<td>".$contador."</td>";
-                                            echo "<td>".$respuesta['nombre']."</td>";
+
+                                            echo "<td>" . $contador . "</td>";
+                                            echo "<td>" . $respuesta['nombre'] . "</td>";
                                             echo "<td><button class='btn btn-success'>Editar</button>  <button class='btn btn-success'>Eliminar</button></td>";
 
 
                                             echo "</tr>";
-                                            
                                         }
 
 
 
                                         ?>
-                              
+
                                     </tbody>
                                 </table>
 
@@ -75,7 +76,7 @@ include("include/conexion.php");
             </div>
         </div>
     </div>
-     <!-- FIN DE CONTENIDO -->
+    <!-- FIN DE CONTENIDO -->
 
 
     <!-- jQuery  -->

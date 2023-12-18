@@ -70,7 +70,7 @@ $_SESSION['productos'] = array();
                                                     $consulta = "SELECT * FROM usuario";
                                                     $ejecutar = mysqli_query($conn, $consulta);
                                                     while ($usuario = mysqli_fetch_array($ejecutar)) {
-                                                        echo '<option value="'.$usuario['id'].'">'.$usuario['apellidos_nombres'].'</option>';
+                                                        echo '<option value="' . $usuario['id'] . '">' . $usuario['apellidos_nombres'] . '</option>';
                                                     }
 
                                                     ?>
@@ -99,7 +99,7 @@ $_SESSION['productos'] = array();
 
 
 
-                                   <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <table class="table table-bordered mb-0">
                                             <thead>
                                                 <tr>
@@ -116,30 +116,30 @@ $_SESSION['productos'] = array();
                                             </thead>
                                             <tbody id="detalle_productos">
                                                 <input type="hidden" name="array_productos" id="array_productos" value="">
-                                                    <?php
-                                                    $cont = 0;
-                                                    $suma_total = 0;
-                                                    $tabla = "";
-                                                    foreach ($_SESSION['productos'] as $key => $value) {
-                                                        $b_producto = "SELECT * FROM producto WHERE id='$key'";
-                                                        $ejec_b_prod = mysqli_query($conn, $b_producto);
-                                                        $r_b_producto = mysqli_fetch_array($ejec_b_prod);
-                                                        $cont++;
-                                                        $tabla .= "<tr>";
-                                                      
-                                                        $importe = $r_b_producto['precio_venta']*$value;
-                                                        $suma_total += $importe;
-                                                        $tabla .= "<td>".$cont."</td>
-                                                        <td>".$r_b_producto['descripcion']."</td>
-                                                        <td><input type='number' id='".$r_b_producto['id']."' onchange='agregar_cantidad(".$r_b_producto['id'].")' class='form-control' value='".$value."' ></td>
-                                                        <td>".$r_b_producto['precio_venta']."</td><td>".$importe."</td>
+                                                <?php
+                                                $cont = 0;
+                                                $suma_total = 0;
+                                                $tabla = "";
+                                                foreach ($_SESSION['productos'] as $key => $value) {
+                                                    $b_producto = "SELECT * FROM producto WHERE id='$key'";
+                                                    $ejec_b_prod = mysqli_query($conn, $b_producto);
+                                                    $r_b_producto = mysqli_fetch_array($ejec_b_prod);
+                                                    $cont++;
+                                                    $tabla .= "<tr>";
+
+                                                    $importe = $r_b_producto['precio_venta'] * $value;
+                                                    $suma_total += $importe;
+                                                    $tabla .= "<td>" . $cont . "</td>
+                                                        <td>" . $r_b_producto['descripcion'] . "</td>
+                                                        <td><input type='number' id='" . $r_b_producto['id'] . "' onchange='agregar_cantidad(" . $r_b_producto['id'] . ")' class='form-control' value='" . $value . "' ></td>
+                                                        <td>" . $r_b_producto['precio_venta'] . "</td><td>" . $importe . "</td>
                                                         <td><button class='btn btn-success' type='button'onClick='return confirm('Estas Seguro que quieres Eliminar?')'>X</button></td>";
-                                                        $tabla .= "</tr>";
-                                                    }
-                                                    $tabla .= "<tr><td colspan='4' class='text-center'>TOTAL</td><td>".$suma_total."</td></tr>";
-                                                    echo $tabla;
-                                                    ?>
-                                                    
+                                                    $tabla .= "</tr>";
+                                                }
+                                                $tabla .= "<tr><td colspan='4' class='text-center'>TOTAL</td><td>" . $suma_total . "</td></tr>";
+                                                echo $tabla;
+                                                ?>
+
                                             </tbody>
 
 
@@ -151,7 +151,7 @@ $_SESSION['productos'] = array();
                                         </table>
 
                                         <?php
-                                                 var_dump($_SESSION['productos']);
+                                        var_dump($_SESSION['productos']);
                                         ?>
                                     </div>
 
@@ -206,7 +206,7 @@ $_SESSION['productos'] = array();
                     elemento: producto
                 },
                 success: function(r) {
-                    
+
                     $('#detalle_productos').html(r);
                 }
             });
@@ -227,20 +227,21 @@ $_SESSION['productos'] = array();
                 }
             })
         };
+
         function eliminar_productos(id) {
-         // alert(id);
+            // alert(id);
 
             //ejecutas el ajax
-           $.ajax({
-            type: 'post',
-            url: 'operaciones2/eliminar_producto.php', //El la URL tienes un espacio
-            data: {
-                id_borrar:id
-            },
-            success: function (data) { 
-                location.reload();
-            }
-        })
+            $.ajax({
+                type: 'post',
+                url: 'operaciones2/eliminar_producto.php', //El la URL tienes un espacio
+                data: {
+                    id_borrar: id
+                },
+                success: function(data) {
+                    location.reload();
+                }
+            })
 
         };
 
@@ -259,9 +260,9 @@ $_SESSION['productos'] = array();
         };
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         function agregar_cantidad(id) {
-            var cantidad = $('#'+id).val();
+            var cantidad = $('#' + id).val();
             $.ajax({
                 type: "POST",
                 url: "operaciones2/agregar_cantidad_prueba.php",
@@ -270,7 +271,7 @@ $_SESSION['productos'] = array();
                     cant: cantidad
                 },
                 success: function(r) {
-                    
+
                     $('#detalle_productos').html(r);
                 }
             });

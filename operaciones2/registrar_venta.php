@@ -30,7 +30,7 @@ foreach ($array_productos as $key => $value) {
     $ejecutar = mysqli_query($conn, $consulta);
     $producto = mysqli_fetch_array($ejecutar);
     $importe = $producto['precio_venta'] * $value;
-    $monto_total_venta +=$importe;
+    $monto_total_venta += $importe;
 }
 
 
@@ -38,13 +38,13 @@ foreach ($array_productos as $key => $value) {
 $registrar_venta = "INSERT INTO ventas (serie_venta, numero_venta, fecha_hora_venta,monto_total	,id_cliente,id_usuario) VALUES('$serie','$numero','$fecha_hora','$monto_total_venta','$id_cliente','$id_usuario')";
 $ejecutar_venta = mysqli_query($conn, $registrar_venta);
 
-if($ejecutar_venta){
+if ($ejecutar_venta) {
 
 
-    echo"REGISTRO DE VENTA EXITOSA";
-}else{
+    echo "REGISTRO DE VENTA EXITOSA";
+} else {
 
-    echo"REGISTRO FALLIDO";
+    echo "REGISTRO FALLIDO";
 }
 
 $buscar_ventas = "SELECT * FROM ventas ORDER BY id DESC LIMIT 1";
@@ -61,8 +61,7 @@ foreach ($array_productos as $key => $value) {
     $consulta = "INSERT INTO detalle_venta (id_venta, id_producto, cantidad, descuentos, importe) VALUES ('$id_venta','$key','$value','','$importe')";
     if (mysqli_query($conn, $consulta)) {
         $nuevo_stock = $producto['stock'] - $value;
-       $consulta = "UPDATE producto SET stock='$nuevo_stock' WHERE id='$key'";
-       $ejecutar = mysqli_query($conn, $consulta);
+        $consulta = "UPDATE producto SET stock='$nuevo_stock' WHERE id='$key'";
+        $ejecutar = mysqli_query($conn, $consulta);
     }
-
 }
