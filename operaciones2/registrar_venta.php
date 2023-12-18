@@ -38,6 +38,14 @@ foreach ($array_productos as $key => $value) {
 $registrar_venta = "INSERT INTO ventas (serie_venta, numero_venta, fecha_hora_venta,monto_total	,id_cliente,id_usuario) VALUES('$serie','$numero','$fecha_hora','$monto_total_venta','$id_cliente','$id_usuario')";
 $ejecutar_venta = mysqli_query($conn, $registrar_venta);
 
+if($ejecutar_venta){
+
+
+    echo"REGISTRO DE VENTA EXITOSA";
+}else{
+
+    echo"REGISTRO FALLIDO";
+}
 
 $buscar_ventas = "SELECT * FROM ventas ORDER BY id DESC LIMIT 1";
 $ejecutar = mysqli_query($conn, $buscar_ventas);
