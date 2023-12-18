@@ -49,7 +49,7 @@ $_SESSION['productos'] = array();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <form role="form" action="operaciones/registrar_venta.php" method="POST">
+                                        <form role="form" action="operaciones2/registrar_venta.php" method="POST">
                                             <div class="form-group row">
                                                 <label class="col-lg-2 col-md-2 col-sm-6">DNI: </label>
                                                 <input type="number" name="dni" id="dni_cliente" class="form-control col-lg-2 col-md-2 col-sm-6" required placeholder="dni cliente">
