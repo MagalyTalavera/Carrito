@@ -200,7 +200,7 @@ $_SESSION['productos'] = array();
             var producto = $('#producto').val();
             $.ajax({
                 type: "POST",
-                url: "operaciones/generar_lista_prueba.php",
+                url: "operaciones2/generar_lista_prueba.php",
                 data: {
                     lista: array,
                     elemento: producto
@@ -217,7 +217,7 @@ $_SESSION['productos'] = array();
             var cantidad = $('#cantidad_' + id).val();
             $.ajax({
                 type: "POST",
-                url: "operaciones/actualizar_cantidad.php",
+                url: "operaciones2/actualizar_cantidad.php",
                 data: {
                     id_p: id,
                     cant: cantidad
@@ -227,13 +227,13 @@ $_SESSION['productos'] = array();
                 }
             })
         };
-        function eliminar_productoss(id) {
-          alert(id);
+        function eliminar_productos(id) {
+         // alert(id);
 
             //ejecutas el ajax
            $.ajax({
             type: 'post',
-            url: 'operaciones/eliminar_producto.php', //El la URL tienes un espacio
+            url: 'operaciones2/eliminar_producto.php', //El la URL tienes un espacio
             data: {
                 id_borrar:id
             },
@@ -248,7 +248,7 @@ $_SESSION['productos'] = array();
             var dni = $('#dni_cliente').val();
             $.ajax({
                 type: "POST",
-                url: "operaciones/buscar_cliente.php",
+                url: "operaciones2/buscar_cliente.php",
                 data: {
                     dni_c: dni
                 },
@@ -264,7 +264,7 @@ $_SESSION['productos'] = array();
             var cantidad = $('#'+id).val();
             $.ajax({
                 type: "POST",
-                url: "operaciones/agregar_cantidad_prueba.php",
+                url: "operaciones2/agregar_cantidad_prueba.php",
                 data: {
                     producto: id,
                     cant: cantidad
